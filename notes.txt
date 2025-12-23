@@ -1,0 +1,32 @@
+fungsi dari setiap folder yang ada:
+1. app directory{
+    menyimpan kode utama dari aplikasi/project
+    }
+2. bootstrap {
+    terdapat file app.php yaitu file yang melakukan bootstrap atau mengambil seluruh aplikasi dalam framework yang biasamya jadi entry point dari aplikasi
+    }
+3. config {
+    konfigurasi dari aplikasi atau project, misal ganti nama aplikasi atau project dan koneksi database
+    }
+4. database {
+    menyimpan segala sesuatu yang berhubungan dengan database. directory yang berguna untuk mengelola database.
+    }
+5. public {
+    menyimpan file-file yang dapat diakses secara public seperti gambar, file javascript, file css, favicon untuk menyimpan favicon, robots untuk crowling pakai SIO
+    }
+6. resource {
+    tempat menyimpan view
+    }
+7. routes {
+    folder menyimpan file-file yang bertugas untuk melakukan rute dari aplikasi/project.
+    }
+8. storage {
+    menyimpan file logs, template blade yang sudah dikompilasi, file session, cache dan fle-file lain yang digenerate oleh framework
+    }
+9. test {
+    folder yang menyimpan file-file yang berhubungan dengan testing pada aplikasi atau project
+    }
+10. vendor {
+    menyimpan package-package yang diinstall melalui komposer
+}
+

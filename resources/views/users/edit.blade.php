@@ -1,0 +1,239 @@
+<x-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Edit User') }} - {{ $user->name }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12 max-sm:py-1">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            @if ($errors->any())
+                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <form action="{{ route('users.update', $user) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- User ID -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    User ID <span class="text-red-500">*</span>
+                                </label>
+                                <div
+                                    class="w-full px-3 py-2 border border-gray-200 bg-gray-100 text-gray-500 rounded-md text-sm italic">
+                                    {{ $user->user_id }}
+                                </div>
+                            </div>
+
+                            <!-- Name -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" name="name" value="{{ old('name', $user->name) }}" required
+                                    class="w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Email (Optional)
+                                </label>
+                                <input type="email" name="email" placeholder="Example dec@gmail.com"
+                                    value="{{ old('email', $user->email) }}"
+                                    class="w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <!-- Password (Optional - only if changing) -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    New Password (Leave blank to keep current)
+                                </label>
+                                <input type="password" name="password"
+                                    class="w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    placeholder="Enter new password to change">
+                            </div>
+
+                            <!-- Role -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Role <span class="text-red-500">*</span>
+                                </label>
+                                <select name="role" required
+                                    class="w-full px-3 py-2 border text-gray-700 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <option value="karyawan"
+                                        {{ old('role', $user->role) === 'karyawan' ? 'selected' : '' }}>Karyawan
+                                    </option>
+                                    <option value="manager"
+                                        {{ old('role', $user->role) === 'manager' ? 'selected' : '' }}>Manager</option>
+                                    <option value="admin"
+                                        {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <!-- Department -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Departments
+                                </label>
+                                <select id="department" name="department"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700">
+                                    <option value="">-- Select Department --</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->name }}" {{-- Logic Selected: Cek data lama (old) atau data user saat ini (edit mode) --}}
+                                            {{ old('department', $user->deparment ?? '') == $department->name ? 'selected' : '' }}>
+                                            {{ $department->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                <x-input-error :messages="$errors->get('level_grade')" class="mt-2" />
+                            </div>
+
+                            <!-- Input Level Grade (Dropdown) -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Level Grade
+                                </label>
+                                <select id="level_grade" name="level_grade"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700">
+                                    <option value="">-- Select Level --</option>
+                                    @foreach ($levelGrades as $level)
+                                        <option value="{{ $level->name }}" {{-- Logic Selected: Cek data lama (old) atau data user saat ini (edit mode) --}}
+                                            {{ old('level_grade', $user->level_grade ?? '') == $level->name ? 'selected' : '' }}>
+                                            {{ $level->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                <x-input-error :messages="$errors->get('level_grade')" class="mt-2" />
+                            </div>
+
+                            {{-- Milih siapa yang akan menjadi managernya untuk submit timesheet --}}
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Direct Manager (Atasan Langsung)
+                                </label>
+                                <select name="manager_id"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700">
+                                    <option value="">- Tidak Ada (Report to Director/CEO) -</option>
+
+                                    @foreach ($managers as $manager)
+                                        <option value="{{ $manager->user_id }}" {{-- Logic Selected untuk Edit --}}
+                                            {{ isset($user) && $user->manager_id == $manager->user_id ? 'selected' : '' }}
+                                            {{-- Logic Selected untuk Create (Old Input) --}}
+                                            {{ old('manager_id') == $manager->user_id ? 'selected' : '' }}>
+                                            {{ $manager->name }} ({{ $manager->level_grade ?? $manager->role }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <p class="text-xs text-gray-500 mt-1">Timesheet user ini akan masuk ke dashboard manager
+                                    yang dipilih.</p>
+                            </div>
+
+                            <!-- Location -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Work Location
+                                </label>
+                                <select name="lokasi_kerja" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700">
+                                    <option value="">Select Lokasi Kerja</option>
+                                    <option value="Head Office"
+                                        {{ old('lokasi_kerja') === 'head_office' ? 'selected' : '' }}>Head Office
+                                    </option>
+                                    <option value="Client Office"
+                                        {{ old('lokasi_kerja') === 'client_office' ? 'selected' : '' }}>Client Office
+                                    </option>
+                                    <option value="Site" {{ old('lokasi_kerja') === 'site' ? 'selected' : '' }}>Site
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Join Date -->
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    Join Date <span class="text-red-500">*</span>
+                                </label>
+                                <input type="date" name="tanggal_masuk"
+                                    value="{{ old('tanggal_masuk', $user->tanggal_masuk ? $user->tanggal_masuk->format('Y-m-d') : '') }}"
+                                    required
+                                    class="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <!-- Exit Date (if inactive) -->
+                            @if (!$user->is_active)
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        Exit Date
+                                    </label>
+                                    <input type="date" name="tanggal_keluar"
+                                        value="{{ old('tanggal_keluar', $user->tanggal_keluar ? $user->tanggal_keluar->format('Y-m-d') : '') }}"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-center">
+                            <div>
+                                <a href="{{ route('users.index') }}"
+                                    class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">
+                                    Cancel
+                                </a>
+                            </div>
+
+                            <div class="flex space-x-2">
+                                <!-- Delete Button -->
+                                @if ($user->timesheets()->count() === 0 && auth()->id() !== $user->id)
+                                    <button type="button"
+                                        onclick="if(confirm('PERMANENTLY DELETE this user? This cannot be undone!')) { document.getElementById('delete-form').submit(); }"
+                                        class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                                        Delete Permanently
+                                    </button>
+                                @endif
+
+                                <!-- Update Button -->
+                                <button type="submit"
+                                    class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                                    Update User
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Separate Delete Form -->
+                    @if ($user->timesheets()->count() === 0 && auth()->id() !== $user->id)
+                        <form id="delete-form" action="{{ route('users.destroy', $user) }}" method="POST"
+                            class="hidden">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    @endif
+
+                    <!-- Warning if cannot delete -->
+                    @if ($user->timesheets()->count() > 0)
+                        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded-md">
+                            <p class="text-sm text-yellow-800">
+                                <strong>Note:</strong> This user has {{ $user->timesheets()->count() }} timesheet(s)
+                                and cannot be deleted permanently.
+                                You can only deactivate this user.
+                            </p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</x-layout>
