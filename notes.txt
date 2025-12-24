@@ -30,3 +30,4 @@ fungsi dari setiap folder yang ada:
     menyimpan package-package yang diinstall melalui komposer
 }
 
+update deploy
