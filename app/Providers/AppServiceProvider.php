@@ -20,8 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Blok kode ini di dalam fungsi boot
-        if (config('app.env') === 'production') {
+        // Memaksa semua link dan redirect menggunakan HTTPS
+        if($this->app->environment('production')) {
             URL::forceScheme('https');
         }
     }
