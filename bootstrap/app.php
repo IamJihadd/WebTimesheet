@@ -16,6 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'karyawan' => \App\Http\Middleware\EnsureUserIsKaryawan::class,
             'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
         ]);
+
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
