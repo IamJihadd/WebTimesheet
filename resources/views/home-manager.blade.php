@@ -30,10 +30,10 @@
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-10">
 
             {{-- 1. STATS CARDS (DATA MANAGER) --}}
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <!-- Card 1: BUTUH APPROVAL (Penting!) -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-yellow-500 flex justify-between flex-row">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-yellow-500 flex justify-between flex-row">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-yellow-100 text-yellow-600 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pending Approval</p>
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Pending Approval</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{ $pendingApprovals }} <span class="text-sm font-normal text-gray-500">docs</span>
                             </p>
@@ -52,7 +52,7 @@
 
                 <!-- Card 2: APPROVED MINGGU INI -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-green-500">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-600 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Approved (This Week)</p>
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Approved (This Week)</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{ $approvedThisWeek }} <span class="text-sm font-normal text-gray-500">docs</span>
                             </p>
@@ -71,7 +71,7 @@
 
                 <!-- Card 3: TOTAL TEAM -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-blue-500">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-blue-500">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Subordinate</p>
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Total Subordinate</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{ $totalStaff }} <span class="text-sm font-normal text-gray-500">people</span>
                             </p>
@@ -91,13 +91,13 @@
             </div>
 
             {{-- 2. MAIN CONTENT GRID --}}
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
                 {{-- LEFT COLUMN: MANAGER ACTIONS --}}
                 <div class="lg:col-span-2">
 
                     {{-- QUICK ACTIONS --}}
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md mb-6">
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Management Actions</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -114,7 +114,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Review & Approve</p>
-                                        <p class="text-xs text-gray-500">Check submitted timesheets</p>
+                                        <p class="text-xs max-sm:text-sm text-gray-500">Check submitted timesheets</p>
                                     </div>
                                 </a>
 
@@ -131,7 +131,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Monthly Report</p>
-                                        <p class="text-xs text-gray-500">View team performance summary</p>
+                                        <p class="text-xs max-sm:text-sm text-gray-500">View team performance summary</p>
                                     </div>
                                 </a>
                             </div>
