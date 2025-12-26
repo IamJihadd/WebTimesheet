@@ -139,7 +139,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Create Timesheet</p>
-                                        <p class="text-sm text-gray-500">Log your work hours for this week</p>
+                                        <p class="text-xs max-sm:text-sm text-gray-500">Log your work hours for this week</p>
                                     </div>
                                 </a>
 
@@ -154,7 +154,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">My History</p>
-                                        <p class="text-sm text-gray-500">View past submitted timesheets</p>
+                                        <p class="text-xs max-sm:text-sm text-gray-500">View past submitted timesheets</p>
                                     </div>
                                 </a>
                             </div>
