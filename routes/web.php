@@ -77,11 +77,11 @@ Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function 
 
     Route::get('/helpdeskit', function () {
         return view('helpdeskit', ['title' => 'Help Desk IT']);
-    });
+    })->name('helpdesk.it');
 
     Route::get('/helpdeskhr', function () {
         return view('helpdeskhr', ['title' => 'Help Desk HR']);
-    });
+    })->name('helpdesk.it');
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

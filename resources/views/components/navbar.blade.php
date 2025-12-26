@@ -9,8 +9,8 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <x-nav-link href="/home" :active="request()->is('home')">Home</x-nav-link>
-                        <x-nav-link href="/timesheet" :active="request()->is('timesheet')">Timesheet</x-nav-link>
+                        <x-nav-link href="{{ route('home') }} " :active="request()->is('home')">Home</x-nav-link>
+                        <x-nav-link href="{{ route('timesheet.index') }}" :active="request()->is('timesheet')">Timesheet</x-nav-link>
                         @if (auth()->user()->isAdmin())
                             <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
                                 {{ __('User Management') }}
@@ -19,8 +19,8 @@
                         <x-nav-link href="{{ route('report.monthly') }}" :active="request()->routeIs('report.monthly')">
                             {{ __('Monthly Report') }}
                         </x-nav-link>
-                        <x-nav-link href="/helpdeskit" :active="request()->is('helpdeskit')">Help Desk IT</x-nav-link>
-                        <x-nav-link href="/helpdeskhr" :active="request()->is('helpdeskhr')">Help Desk HR</x-nav-link>
+                        <x-nav-link href="{{ route('helpdesk.it') }}" :active="request()->is('helpdeskit')">Help Desk IT</x-nav-link>
+                        <x-nav-link href="{{ route('helpdesk.hr') }}" :active="request()->is('helpdeskhr')">Help Desk HR</x-nav-link>
                     </div>
                 </div>
             </div>
