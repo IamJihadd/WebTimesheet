@@ -61,7 +61,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <!-- Card 1: Timesheet Status -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-blue-500">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-blue-500">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-blue-100 text-blue-500 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Current Week Status</p>
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Current Week Status</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{-- Logika dummy, nanti bisa diganti data asli --}}
                                 {{ $currentStatus }}
@@ -82,7 +82,7 @@
 
                 <!-- Card 2: Total Hours -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-green-500">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-green-100 text-green-500 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Hours Logged (This Month)
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Hours Logged (This Month)
                             </p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{ $loggedHours }} <span class="text-sm font-normal text-gray-500">hrs</span>
@@ -102,7 +102,7 @@
 
                 <!-- Card 3: Pending Approval -->
                 <div
-                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-yellow-500">
+                    class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md p-6 border-l-4 border-yellow-500">
                     <div class="flex items-center">
                         <div class="p-3 rounded-full bg-yellow-100 text-yellow-500 mr-4">
                             <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pending Approvals</p>
+                            <p class="text-md font-medium text-gray-500 dark:text-gray-400">Pending Approvals</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-white">
                                 {{ $docsHaventApproved }} <span class="text-sm font-normal text-gray-500">doc</span>
                             </p>
@@ -125,7 +125,7 @@
 
                 {{-- LEFT COLUMN: QUICK ACTIONS --}}
                 <div class="lg:col-span-2">
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg max-sm:rounded-md mb-6">
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -139,7 +139,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Create Timesheet</p>
-                                        <p class="text-xs text-gray-500">Log your work hours for this week</p>
+                                        <p class="text-sm text-gray-500">Log your work hours for this week</p>
                                     </div>
                                 </a>
 
@@ -154,7 +154,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">My History</p>
-                                        <p class="text-xs text-gray-500">View past submitted timesheets</p>
+                                        <p class="text-sm text-gray-500">View past submitted timesheets</p>
                                     </div>
                                 </a>
                             </div>
@@ -182,22 +182,14 @@
                     </div>
                 </div>
 
-                {{-- RIGHT COLUMN: DIGITAL ID CARD --}}
+                {{-- DIGITAL ID CARD KARYAWAN --}}
                 <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden shadow-xl text-white relative h-full border border-slate-700">
+                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden shadow-xl text-white h-full border border-slate-700">
 
-                    <!-- Background Pattern (Hiasan) -->
-                    <div
-                        class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-16 -mt-16 blur-2xl">
-                    </div>
-                    <div
-                        class="absolute bottom-0 left-0 w-24 h-24 bg-blue-500 opacity-10 rounded-full -ml-10 -mb-10 blur-xl">
-                    </div>
-
-                    <div class="p-6 relative z-10">
+                    <div class="p-6 z-10">
                         <div class="flex justify-between items-start mb-6">
                             <!-- Logo Perusahaan Kecil -->
-                            <div class="flex items-center space-x-2 opacity-80">
+                            <div class="flex items-center space-x-2">
                                 <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
                                 <span class="text-xs tracking-widest uppercase font-semibold">Employee ID</span>
                             </div>
@@ -208,7 +200,7 @@
                             </span>
                         </div>
 
-                        <div class="flex items-center space-x-4 mb-9">
+                        <div class="flex items-center space-x-4 mb-6">
                             <!-- Foto Profil (Inisial Nama) -->
                             <div
                                 class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-xl font-bold text-white shadow-lg border-2 border-slate-700">
