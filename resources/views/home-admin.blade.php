@@ -109,7 +109,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Review The Timesheet</p>
-                                        <p class="text-xs sm:text-md text-gray-500">Check submitted and approved timesheets</p>
+                                        <p class="text-xs sm:text-sm text-gray-500">Check submitted and approved timesheets</p>
                                     </div>
                                 </a>
 
@@ -126,7 +126,7 @@
                                     </div>
                                     <div>
                                         <p class="font-bold text-gray-900 dark:text-white">Monthly Report</p>
-                                        <p class="text-xs sm:text-md text-gray-500">View team performance summary</p>
+                                        <p class="text-xs sm:text-sm text-gray-500">View team performance summary</p>
                                     </div>
                                 </a>
                             </div>
