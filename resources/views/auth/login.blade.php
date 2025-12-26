@@ -15,7 +15,7 @@
             <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white max-sm:mt-5">Sign in to your account</h2>
         </div>
 
-        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm max-sm:mt-5">
+        <div class="mt-10 mb-0 sm:mx-auto sm:w-full sm:max-w-sm max-sm:mt-0 max-sm:mb-20">
             <!-- Session Status -->
             @if (session('status'))
                 <div class="mb-4 rounded-md bg-green-500/10 px-4 py-3 text-sm text-green-400">
