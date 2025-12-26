@@ -17,22 +17,16 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-// Protected routes - harus login dulu
-Route::middleware(['auth', 'verified'])->group(function () {
+// Ini akan melindungi SEMUA rute di dalamnya (Home, Timesheet, Profile, dll)
+Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function () {
 
     // Home - berbeda per role
     Route::get('/home', function () {
-        // $user = Auth::user();
-
         if (auth::user()->isManager()) {
-            // Manager: Summary & approval
             return view('home-manager');
-        } 
-        elseif (auth::user()->isAdmin()) {
+        } elseif (auth::user()->isAdmin()) {
             return view('home-admin');
         }
-
-        // Karyawan: Personal summary
         return view('home-karyawan', ['title' => 'Home Page']);
     })->name('home');
 
@@ -46,8 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     //  print pdf
     Route::get('/timesheet/{timesheet}/pdf', [TimesheetController::class, 'exportPdf'])
-        ->name('timesheet.pdf')
-        ->middleware('auth');
+        ->name('timesheet.pdf');
 
     // Manager only routes
     Route::middleware(['manager'])->group(function () {
