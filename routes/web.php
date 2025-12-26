@@ -81,7 +81,7 @@ Route::middleware(['auth', 'verified', 'prevent-back-history'])->group(function 
 
     Route::get('/helpdeskhr', function () {
         return view('helpdeskhr', ['title' => 'Help Desk HR']);
-    })->name('helpdesk.it');
+    })->name('helpdesk.hr');
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

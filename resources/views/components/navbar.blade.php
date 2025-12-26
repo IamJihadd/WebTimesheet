@@ -77,10 +77,10 @@
          class="md:hidden bg-gray-900 border-t border-gray-800">
         
         <div class="pt-2 pb-3 space-y-1 px-2">
-            <x-responsive-nav-link href="/home" :active="request()->is('home')">
+            <x-responsive-nav-link href="{{ route('home') }}" :active="request()->is('home')">
                 Home
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="/timesheet" :active="request()->is('timesheet')">
+            <x-responsive-nav-link href="{{ route('timesheet.index') }}" :active="request()->is('timesheet')">
                 Timesheet
             </x-responsive-nav-link>
             
@@ -93,10 +93,10 @@
             <x-responsive-nav-link href="{{ route('report.monthly') }}" :active="request()->routeIs('report.monthly')">
                 Monthly Report
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="/helpdeskit" :active="request()->is('helpdeskit')">
+            <x-responsive-nav-link href="{{ route('helpdesk.it') }}" :active="request()->is('helpdeskit')">
                 Help Desk IT
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="/helpdeskhr" :active="request()->is('helpdeskhr')">
+            <x-responsive-nav-link href="{{ route('helpdesk.hr') }}" :active="request()->is('helpdeskhr')">
                 Help Desk HR
             </x-responsive-nav-link>
         </div>
