@@ -349,7 +349,7 @@ class TimesheetController extends Controller
     public function exportPdf(Timesheet $timesheet)
     {
         // Authorization check
-        if (!auth()->user()->isManager() && $timesheet->user_id !== auth()->id()) {
+        if (!auth()->user()->isManager() && $timesheet->user_id !== auth()->id() && !auth()->user()->isAdmin()) {
             abort(403, 'Unauthorized');
         }
 
