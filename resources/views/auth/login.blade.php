@@ -33,7 +33,7 @@
                     <div class="mt-2">
                         <input id="user_id" type="text" name="user_id" value="{{ old('user_id') }}" required
                             autofocus
-                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 max-sm:text-sm/8" />
                     </div>
                     @error('user_id')
                         <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
@@ -43,7 +43,7 @@
                 <!-- Password -->
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
+                        <label for="password" class="block sm:text-sm/6 font-medium text-gray-100">Password</label>
                         @if (Route::has('password.request'))
                             <div class="text-sm">
                                 <a href="{{ route('password.request') }}"
@@ -55,7 +55,7 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" type="password" name="password" required autocomplete="current-password"
-                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500  sm:text-sm/6 max-sm:text-sm/8" />
                     </div>
                     @error('password')
                         <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
