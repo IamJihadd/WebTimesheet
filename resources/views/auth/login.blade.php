@@ -43,7 +43,7 @@
                 <!-- Password -->
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block sm:text-sm/6 font-medium text-gray-100">Password</label>
+                        <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
                         @if (Route::has('password.request'))
                             <div class="text-sm">
                                 <a href="{{ route('password.request') }}"
