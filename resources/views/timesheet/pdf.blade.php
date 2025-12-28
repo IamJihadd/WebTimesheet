@@ -75,7 +75,7 @@
         }
         
         .timesheet-table th {
-            background-color: #d0d0d0;
+            background-color: #f0f0f0;
             font-weight: bold;
         }
         
@@ -150,7 +150,7 @@
 </head>
 <body>
     <!-- Header -->
-    <div class="header">
+    <div class="header">      
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
         <div class="title">WEEKLY TIMESHEET</div>
     </div>
