@@ -175,7 +175,7 @@
     <!-- Header -->
     <div class="header">
         <div class="header-logo-container">
-            <img src="{{ public_path('img/logonama_DEC.png') }}" alt="Your Company" />
+            <img src="{{ asset('img/logonama_DEC.png') }}" alt="Your Company" />
         </div>
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
         <div class="title">WEEKLY TIMESHEET</div>
