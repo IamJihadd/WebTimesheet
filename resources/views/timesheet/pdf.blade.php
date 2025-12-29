@@ -178,7 +178,7 @@
         @php
             $logoSrc = '';
             try {
-                $path = public_path('images/logo.png'); // Pastikan path ini benar
+                $path = public_path('img/logonama_DEC.png'); // Pastikan path ini benar
                 if (file_exists($path)) {
                     $type = pathinfo($path, PATHINFO_EXTENSION);
                     $data = file_get_contents($path);
