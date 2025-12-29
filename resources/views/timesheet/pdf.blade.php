@@ -179,7 +179,7 @@
             $logoBase64 = '';
             // Gunakan try-catch PHP murni untuk memastikan tidak ada syntax error
             try {
-                $logoPath = public_path('images/logo.png');
+                $logoPath = public_path('img/logonama_DEC.png');
                 if (file_exists($logoPath)) {
                     $logoData = base64_encode(file_get_contents($logoPath));
                     $logoBase64 = 'data:image/png;base64,' . $logoData;
