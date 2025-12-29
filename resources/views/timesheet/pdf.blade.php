@@ -172,23 +172,28 @@
 </head>
 
 <body>
-    @php
-        // Ambil file gambar
-        $path = public_path('img/logonama_DEC.png');
-        // Ubah jadi data biner
-        $type = pathinfo($path, PATHINFO_EXTENSION);
-        $data = file_get_contents($path);
-        // Ubah jadi base64
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-    @endphp
 
     <!-- Header -->
     <div class="header">
-        <div class="header-logo-container">
-            <img src="{{ $base64 }}" alt="Your Company" />
-        </div>
-        <div class="company-name">PT. DARYA ELANG CARAKA</div>
-        <div class="title">WEEKLY TIMESHEET</div>
+        @php
+            $logoSrc = '';
+            try {
+                $path = public_path('images/logo.png'); // Pastikan path ini benar
+                if (file_exists($path)) {
+                    $type = pathinfo($path, PATHINFO_EXTENSION);
+                    $data = file_get_contents($path);
+                    $logoSrc = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                }
+            } catch (\Exception $e) {
+                $logoSrc = ''; // Diam saja kalau error
+            }
+        @endphp
+
+        @if (!empty($logoSrc))
+            <img src="{{ $logoSrc }}" width="100" style="margin-bottom: 10px;">
+        @else
+            <div class="company-name">PT. DARYA ELANG CARAKA</div>
+            <div class="title">WEEKLY TIMESHEET</div>
     </div>
 
     <!-- Info Section -->
