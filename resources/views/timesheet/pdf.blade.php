@@ -176,24 +176,29 @@
     <!-- Header -->
     <div class="header">
         @php
-            $logoSrc = '';
+            $logoBase64 = '';
+            // Gunakan try-catch PHP murni untuk memastikan tidak ada syntax error
             try {
-                $path = public_path('img/logonama_DEC.png'); // Pastikan path ini benar
-                if (file_exists($path)) {
-                    $type = pathinfo($path, PATHINFO_EXTENSION);
-                    $data = file_get_contents($path);
-                    $logoSrc = 'data:image/' . $type . ';base64,' . base64_encode($data);
+                $logoPath = public_path('images/logo.png');
+                if (file_exists($logoPath)) {
+                    $logoData = base64_encode(file_get_contents($logoPath));
+                    $logoBase64 = 'data:image/png;base64,' . $logoData;
                 }
             } catch (\Exception $e) {
-                $logoSrc = ''; // Diam saja kalau error
+                $logoBase64 = '';
             }
         @endphp
 
-        @if (!empty($logoSrc))
-            <img src="{{ $logoSrc }}" width="100" style="margin-bottom: 10px;">
-        @else
-            <div class="company-name">PT. DARYA ELANG CARAKA</div>
-            <div class="title">WEEKLY TIMESHEET</div>
+        {{-- Bagian Tampilan --}}
+        <div style="text-align: center; margin-bottom: 20px;">
+            @if (!empty($logoBase64))
+                <img src="{{ $logoBase64 }}" width="100">
+            @else
+                <h2 style="margin: 0;">NAMA PERUSAHAAN</h2>
+            @endif
+        </div>
+        <div class="company-name">PT. DARYA ELANG CARAKA</div>
+        <div class="title">WEEKLY TIMESHEET</div>
     </div>
 
     <!-- Info Section -->
