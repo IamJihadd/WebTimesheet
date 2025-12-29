@@ -172,32 +172,10 @@
 </head>
 
 <body>
-
     <!-- Header -->
     <div class="header">
-        @php
-            $logoBase64 = '';
-            $testPath = public_path('img/logonama_DEC.png');
-
-            // Cek apakah file benar-benar ada di server Railway
-            $exists = file_exists($testPath) ? 'ADA' : 'TIDAK ADA';
-        @endphp
-
-        <div style="text-align: center;">
-            @if ($exists == 'ADA')
-                @php
-                    $data = file_get_contents($testPath);
-                    $logoBase64 = 'data:image/png;base64,' . base64_encode($data);
-                @endphp
-                <img src="{{ $logoBase64 }}" width="150">
-            @else
-                <div style="color: red; padding: 10px; border: 1px solid red;">
-                    <strong>DEBUG INFO:</strong><br>
-                    File tidak ditemukan di server!<br>
-                    Path yang dicari: <code>{{ $testPath }}</code><br>
-                    Silakan cek apakah folder <strong>img</strong> sudah di-push ke GitHub.
-                </div>
-            @endif
+        <div class="header-logo-container">
+            <img src="{{ asset('img/logonama_DEC.png') }}" alt="Your Company" />
         </div>
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
         <div class="title">WEEKLY TIMESHEET</div>
