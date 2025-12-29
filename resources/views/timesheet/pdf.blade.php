@@ -177,24 +177,26 @@
     <div class="header">
         @php
             $logoBase64 = '';
-            // Gunakan try-catch PHP murni untuk memastikan tidak ada syntax error
-            try {
-                $logoPath = public_path('img/logonama_DEC.png');
-                if (file_exists($logoPath)) {
-                    $logoData = base64_encode(file_get_contents($logoPath));
-                    $logoBase64 = 'data:image/png;base64,' . $logoData;
-                }
-            } catch (\Exception $e) {
-                $logoBase64 = '';
-            }
+            $testPath = public_path('img/logonama_DEC.png');
+
+            // Cek apakah file benar-benar ada di server Railway
+            $exists = file_exists($testPath) ? 'ADA' : 'TIDAK ADA';
         @endphp
 
-        {{-- Bagian Tampilan --}}
-        <div style="text-align: center; margin-bottom: 20px;">
-            @if (!empty($logoBase64))
-                <img src="{{ $logoBase64 }}" width="100">
+        <div style="text-align: center;">
+            @if ($exists == 'ADA')
+                @php
+                    $data = file_get_contents($testPath);
+                    $logoBase64 = 'data:image/png;base64,' . base64_encode($data);
+                @endphp
+                <img src="{{ $logoBase64 }}" width="150">
             @else
-                <h2 style="margin: 0;">NAMA PERUSAHAAN</h2>
+                <div style="color: red; padding: 10px; border: 1px solid red;">
+                    <strong>DEBUG INFO:</strong><br>
+                    File tidak ditemukan di server!<br>
+                    Path yang dicari: <code>{{ $testPath }}</code><br>
+                    Silakan cek apakah folder <strong>img</strong> sudah di-push ke GitHub.
+                </div>
             @endif
         </div>
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
