@@ -150,7 +150,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Rejection Reason <span class="text-red-500">*</span>
                         </label>
-                        <textarea name="rejection_reason" class="w-full px-3 py-2 text-gray-800 border border-gray-300 rounded-md"
+                        <textarea name="rejection_reason" class="w-full px-3 py-2 text-gray-900 border border-gray-300 rounded-md"
                             rows="4" required placeholder="Please provide reason for rejection..."></textarea>
                     </div>
                     <div class="flex justify-end space-x-2">
