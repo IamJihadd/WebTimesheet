@@ -172,10 +172,20 @@
 </head>
 
 <body>
+    @php
+        // Ambil file gambar
+        $path = public_path('img/logonama_DEC.png');
+        // Ubah jadi data biner
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        // Ubah jadi base64
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+    @endphp
+
     <!-- Header -->
     <div class="header">
         <div class="header-logo-container">
-            <img src="{{ asset('img/logonama_DEC.png') }}" alt="Your Company" />
+            <img src="{{ $base64 }}" alt="Your Company" />
         </div>
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
         <div class="title">WEEKLY TIMESHEET</div>
