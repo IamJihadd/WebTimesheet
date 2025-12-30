@@ -18,29 +18,8 @@
         }
 
         .header {
-            position: relative;
-            /* KUNCI: Agar elemen absolute di dalamnya terkunci di sini */
             text-align: center;
-            margin-bottom: 20px;
-            height: 60px;
-            /* Menjaga tinggi header agar tidak kolaps */
-            width: 100%;
-        }
-
-        /* Wadah untuk Logo */
-        .header-logo-container {
-            position: absolute;
-            /* Lepas dari aliran teks, tempel ke pojok */
-            top: 0;
-            left: 0;
-        }
-
-        /* Mengatur ukuran gambar agar tidak raksasa */
-        .header-logo-container img {
-            height: 50px;
-            /* Paksa tinggi gambar jadi 50px */
-            width: auto;
-            /* Lebar menyesuaikan proporsi */
+            margin-bottom: 10px;
         }
 
         .company-name {
@@ -174,9 +153,6 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="header-logo-container">
-            <img src="{{ public_path('img/logo_DEC.png') }}" alt="Your Company" />
-        </div>
         <div class="company-name">PT. DARYA ELANG CARAKA</div>
         <div class="title">WEEKLY TIMESHEET</div>
     </div>
