@@ -24,19 +24,19 @@
             <!-- Employee Info Card -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold mb-4">Employee Information</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Employee Information</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Name</p>
-                            <p class="font-medium">{{ $timesheet->user->name }}</p>
+                            <p class="font-medium text-gray-800 dark:text-gray-200">{{ $timesheet->user->name }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">User ID</p>
-                            <p class="font-medium">{{ $timesheet->user->user_id }}</p>
+                            <p class="font-medium text-gray-800 dark:text-gray-200">{{ $timesheet->user->user_id }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Department</p>
-                            <p class="font-medium">{{ $timesheet->user->department ?? '-' }}</p>
+                            <p class="font-medium text-gray-800 dark:text-gray-200">{{ $timesheet->user->department ?? '-' }}</p>
                         </div>
                     </div>
                 </div>
@@ -45,26 +45,26 @@
             <!-- Status Info -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold mb-4">Status Information</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Status Information</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Submitted At</p>
-                            <p class="font-medium">
+                            <p class="font-medium text-gray-800 dark:text-gray-200">
                                 {{ $timesheet->submitted_at ? $timesheet->submitted_at->format('d M Y H:i') : '-' }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-400">Week No</p>
-                            <p class="font-medium">
+                            <p class="font-medium text-gray-800 dark:text-gray-200">
                                 {{ $timesheet->week_start->format('Y-W') }}</p>
                         </div>
                         @if ($timesheet->approved_at)
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">Approved At</p>
-                                <p class="font-medium">{{ $timesheet->approved_at->format('d M Y H:i') }}</p>
+                                <p class="font-medium text-gray-800 dark:text-gray-200">{{ $timesheet->approved_at->format('d M Y H:i') }}</p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-400">Approved By</p>
-                                <p class="font-medium">{{ $timesheet->approver ? $timesheet->approver->name : '-' }}</p>
+                                <p class="font-medium text-gray-800 dark:text-gray-200">{{ $timesheet->approver ? $timesheet->approver->name : '-' }}</p>
                             </div>
                         @endif
                         @if ($timesheet->isRejected())
@@ -83,7 +83,7 @@
                     <h3 class="text-lg font-semibold mb-4">Timesheet Entries</h3>
 
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm border-collapse">
+                        <table class="w-full text-sm border-collapse text-gray-900 dark:text-white">
                             <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-700 text-center">
                                 <tr>
                                     <th rowspan="3" class="px-2 py-2">Discipline</th>
@@ -93,7 +93,7 @@
                                     <th rowspan="3" class="px-2 py-2">Task</th>
 
                                     @foreach ($timesheet->getWeekDates() as $date)
-                                        <th colspan="2" class="px-2 py-1  bg-gray-800/50">{{ $date['formatted'] }}</th>
+                                        <th colspan="2" class="px-2 py-1  bg-gray-200/50 dark:bg-gray-800/50">{{ $date['formatted'] }}</th>
                                     @endforeach
 
                                     <th rowspan="2" colspan="2" class="px-2 py-2">Total</th>
@@ -105,11 +105,11 @@
                                 </tr>
                                 <tr>
                                     @foreach ($timesheet->getWeekDates() as $date)
-                                        <th class="px-3 py-1 border-r-2 border-gray-700/50 bg-gray-800">R</th>
-                                        <th class="px-2 py-1 border-r-2 border-gray-600/50 bg-gray-800">OT</th>
+                                        <th class="px-3 py-1 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">R</th>
+                                        <th class="px-2 py-1 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">OT</th>
                                     @endforeach
-                                    <th class="px-2 py-1 border-r-2 border-gray-700/50 bg-gray-800">R</th>
-                                    <th class="px-2 py-1 border-r-2 border-gray-600/50 bg-gray-800">OT</th>
+                                    <th class="px-2 py-1 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">R</th>
+                                    <th class="px-2 py-1 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">OT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,16 +122,16 @@
                                         <td class="px-3 py-3">{{ $entry->task }}</td>
 
                                         @foreach (['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as $day)
-                                            <td class="px-2 py-2 border-r-2 border-gray-700/50 text-center">{{ (float) $entry->{$day . '_regular'} }}
+                                            <td class="px-2 py-2 border-r-2 border-gray-300/50 dark:border-gray-700/50 text-center">{{ (float) $entry->{$day . '_regular'} }}
                                             </td>
-                                            <td class="px-2 py-2 border-r-2 border-gray-600/50 text-center">
+                                            <td class="px-2 py-2 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center">
                                                 {{ (float) $entry->{$day . '_overtime'} }}
                                             </td>
                                         @endforeach
 
-                                        <td class="px-2 py-2 border-r-2 border-gray-700/50 text-center font-semibold">
+                                        <td class="px-2 py-2 border-r-2 border-gray-300/50 dark:border-gray-700/50 text-center font-semibold">
                                             {{ (float) $entry->total_regular }}</td>
-                                        <td class="px-2 py-2 text-center font-semibold">
+                                        <td class="px-2 py-2 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center font-semibold">
                                             {{ (float) $entry->total_overtime }}</td>
                                     </tr>
                                 @empty
@@ -163,12 +163,12 @@
                                             $dayOT = $timesheet->entries->sum($day . '_overtime');
                                             $grandTotalReg += $dayReg;
                                             $grandTotalOT += $dayOT;
-                                            echo "<td class='px-2 py-3 border-r-2 border-gray-700/50 text-center'>{$dayReg}</td>";
-                                            echo "<td class='px-2 py-3 border-r-2 border-gray-600/50 text-center'>{$dayOT}</td>";
+                                            echo "<td class='px-2 py-3 border-r-2 border-gray-300/50 dark:border-gray-700/50 text-center'>{$dayReg}</td>";
+                                            echo "<td class='px-2 py-3 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center'>{$dayOT}</td>";
                                         }
                                     @endphp
-                                    <td class="px-2 py-3 border-r-2 border-gray-700/50 text-center">{{ $grandTotalReg }}</td>
-                                    <td class="px-2 py-3 border-r-2 border-gray-600/50 text-center">{{ $grandTotalOT }}</td>
+                                    <td class="px-2 py-3 border-r-2 border-gray-300/50 dark:border-gray-700/50 text-center">{{ $grandTotalReg }}</td>
+                                    <td class="px-2 py-3 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center">{{ $grandTotalOT }}</td>
                                 </tr>
                             </tfoot>
                         </table>

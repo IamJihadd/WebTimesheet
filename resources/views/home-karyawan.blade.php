@@ -172,10 +172,9 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold mb-1">Reminder: Submit on Time!</h3>
+                                <h3 class="text-lg font-bold mb-1 text-gray-900 dark:text-white">Reminder: Submit on Time!</h3>
                                 <p class="text-indigo-100 text-sm">
-                                    Please ensure all timesheets for this week are submitted by <strong>Friday, 17:00
-                                        PM</strong>. Late submissions may delay approval process.
+                                    Harap pastikan semua Timesheet untuk minggu ini dikirimkan paling lambat hari <strong>Minggu, 24:00</strong>. Pengiriman yang terlambat dapat menunda proses persetujuan.
                                 </p>
                             </div>
                         </div>
@@ -184,14 +183,14 @@
 
                 {{-- DIGITAL ID CARD KARYAWAN --}}
                 <div
-                    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl overflow-hidden shadow-xl text-white h-full border border-slate-700">
+                    class="bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 rounded-xl overflow-hidden shadow-xl text-white h-full border border-slate-100 dark:border-slate-700">
 
                     <div class="p-6 z-10">
                         <div class="flex justify-between items-start mb-6">
                             <!-- Logo Perusahaan Kecil -->
                             <div class="flex items-center space-x-2">
                                 <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                <span class="text-xs tracking-widest uppercase font-semibold">Employee ID</span>
+                                <span class="text-xs tracking-widest uppercase font-semibold text-blue-400">Employee ID</span>
                             </div>
                             <!-- Status Badge -->
                             <span
@@ -203,13 +202,13 @@
                         <div class="flex items-center space-x-4 mb-6">
                             <!-- Foto Profil (Inisial Nama) -->
                             <div
-                                class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-xl font-bold text-white shadow-lg border-2 border-slate-700">
+                                class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-xl font-bold dark:text-gray-900 text-white shadow-lg border-2 border-slate-300 dark:border-slate-700">
                                 {{ substr(Auth::user()->name, 0, 2) }}
                             </div>
 
                             <div>
-                                <h3 class="text-lg font-bold leading-tight">{{ Auth::user()->name }}</h3>
-                                <p class="text-sm text-slate-400">{{ Auth::user()->email }}</p>
+                                <h3 class="text-lg font-bold leading-tight text-gray-900 dark:text-white">{{ Auth::user()->name }}</h3>
+                                <p class="text-sm text-gray-900 dark:text-white">{{ Auth::user()->email }}</p>
                                 <p class="text-xs text-blue-400 mt-1 uppercase tracking-wide font-semibold">
                                     {{ Auth::user()->isManager() ? 'Manager Team' : 'Staff Member' }}
                                 </p>
@@ -220,22 +219,22 @@
                         <div class="grid grid-cols-2 gap-4 border-t border-slate-700/50 pt-8">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Employee ID</p>
-                                <p class="font-mono text-sm tracking-wider">{{ Auth::user()->user_id }}</p>
+                                <p class="font-mono text-sm tracking-wider text-gray-900 dark:text-white">{{ Auth::user()->user_id }}</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Joined Date</p>
                                 {{-- Gunakan created_at sebagai dummy tanggal masuk --}}
-                                <p class="font-mono text-sm">{{ Auth::user()->tanggal_masuk->format('d M Y') }}</p>
+                                <p class="font-mono text-sm text-gray-900 dark:text-white">{{ Auth::user()->tanggal_masuk->format('d M Y') }}</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Department</p>
                                 {{-- Gunakan created_at sebagai dummy tanggal masuk --}}
-                                <p class="font-mono text-sm">{{ Auth::user()->department }}</p>
+                                <p class="font-mono text-sm text-gray-900 dark:text-white">{{ Auth::user()->department }}</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Work Location</p>
                                 {{-- Gunakan created_at sebagai dummy tanggal masuk --}}
-                                <p class="font-mono text-sm">{{ Auth::user()->lokasi_kerja }}</p>
+                                <p class="font-mono text-sm text-gray-900 dark:text-white">{{ Auth::user()->lokasi_kerja }}</p>
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
+                        <table class="w-full text-sm text-left text-gray-900 dark:text-white">
                             <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-700">
                                 <tr>
                                     <th class="px-6 py-3">User ID</th>

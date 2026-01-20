@@ -134,17 +134,17 @@
 
                     {{-- WELCOME BANNER --}}
                     <div
-                        class="bg-gradient-to-r from-slate-700 to-slate-800 rounded-lg shadow-lg p-6 text-white border border-slate-600">
+                        class="bg-gradient-to-r from-indigo-500 to-teal-500 rounded-lg shadow-lg p-6 text-white border border-slate-100 dark:border-slate-700">
                         <div class="flex items-start">
-                            <div class="p-2 bg-white/10 rounded-lg mr-4">
+                            <div class="p-2 bg-teal-500 rounded-lg mr-4">
                                 <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold mb-1">Good Day, Admin!</h3>
-                                <p class="text-slate-300 text-sm">
+                                <h3 class="text-lg text-indigo-100 font-bold mb-1">Good Day, Admin!</h3>
+                                <p class="text-indigo-100 text-sm">
                                     Anda memiliki <strong>{{ $pendingApprovals }} timesheet</strong> yang dapat anda
                                     review minggu ini. Mohon ditinjau sebelum hari Jumat.
                                 </p>
@@ -155,12 +155,12 @@
 
                 {{-- DIGITAL ID CARD (ADMIN VERSION) --}}
                 <div
-                    class="bg-gradient-to-br from-slate-900 to-black rounded-xl overflow-hidden shadow-2xl text-white h-full border border-slate-700">
+                    class="bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:to-black rounded-xl overflow-hidden shadow-2xl text-white h-full border border-slate-100 dark:border-slate-700">
                     <div class="p-6 z-10">
                         <div class="flex justify-between items-start mb-6">
                             <div class="flex items-center space-x-2">
                                 <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-xs tracking-widest uppercase font-semibold text-white">Admin
+                                <span class="text-xs tracking-widest uppercase font-semibold text-gray-900 dark:text-white">Admin
                                     Access</span>
                             </div>
                             <span
@@ -171,13 +171,13 @@
 
                         <div class="flex items-center space-x-4 mb-6">
                             <div
-                                class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center text-xl font-bold text-white shadow-lg border-2 border-slate-700">
+                                class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-blue-600 flex items-center justify-center text-xl font-bold dark:text-slate-900 text-white shadow-lg border-2 border-slate-100 dark:border-slate-700">
                                 {{ substr(Auth::user()->name, 0, 2) }}
                             </div>
 
                             <div>
-                                <h3 class="text-lg font-bold leading-tight">{{ Auth::user()->name }}</h3>
-                                <p class="text-sm text-slate-400">{{ Auth::user()->email }}</p>
+                                <h3 class="text-lg font-bold leading-tight text-gray-900 dark:text-white">{{ Auth::user()->name }}</h3>
+                                <p class="text-sm text-gray-900 dark:text-white">{{ Auth::user()->email }}</p>
                                 <p class="text-xs text-green-500 mt-1 uppercase tracking-wide font-semibold">
                                     {{ Auth::user()->level_grade }}
                                 </p>
@@ -187,24 +187,24 @@
                         <div class="grid grid-cols-2 gap-4 border-t border-slate-700/50 pt-4">
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Employee ID</p>
-                                <p class="font-mono text-sm tracking-wider text-slate-200">{{ Auth::user()->user_id }}
+                                <p class="font-mono text-sm tracking-wider text-gray-900 dark:text-slate-200">{{ Auth::user()->user_id }}
                                 </p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Joined Date</p>
                                 {{-- Gunakan created_at sebagai dummy tanggal masuk --}}
-                                <p class="font-mono text-sm">{{ Auth::user()->tanggal_masuk->format('d M Y') }}</p>
+                                <p class="font-mono text-sm text-gray-900 dark:text-slate-200">{{ Auth::user()->tanggal_masuk->format('d M Y') }}</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Department</p>
-                                <p class="font-mono text-sm text-slate-200">
+                                <p class="font-mono text-sm text-gray-900 dark:text-slate-200">
                                     {{ Auth::user()->department ?? 'General' }}
                                 </p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-slate-500 uppercase">Work Location</p>
                                 {{-- Gunakan created_at sebagai dummy tanggal masuk --}}
-                                <p class="font-mono text-sm">{{ Auth::user()->lokasi_kerja }}</p>
+                                <p class="font-mono text-sm text-gray-900 dark:text-slate-200">{{ Auth::user()->lokasi_kerja }}</p>
                             </div>
                         </div>
                         {{-- <div class="mt-4 pt-2 opacity-40">

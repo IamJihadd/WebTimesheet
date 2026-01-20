@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gray-900 sticky top-0 z-50 border-b border-gray-800">
+<nav x-data="{ open: false }" class="bg-gray-100 dark:bg-gray-900 sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800">
     <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-10">
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
