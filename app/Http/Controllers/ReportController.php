@@ -24,7 +24,7 @@ class ReportController extends Controller
 
         if ($user->isAdmin()) {
             // ADMIN: Lihat Semua User aktif
-            // Kita ambil ID semua user dari tabel users (opsional: filter is_active=true)
+            // Kita ambil ID semua user dari tabel users
             $allowedUserIds = User::pluck('user_id')->toArray();
         } elseif ($user->isManager()) {
             // MANAGER: Lihat Bawahan + Diri Sendiri
@@ -37,50 +37,50 @@ class ReportController extends Controller
 
         // 3. Ambil Data Mentah (Tanpa Grouping SQL)
         // Kita ambil semua entries dulu, baru diolah di bawah
-        $query = TimesheetEntry::with(['timesheet.user']) 
-            ->whereHas('timesheet', function($q) use ($user, $month, $year, $allowedUserIds) {
+        $query = TimesheetEntry::with(['timesheet.user'])
+            ->whereHas('timesheet', function ($q) use ($user, $month, $year, $allowedUserIds) {
                 $q->whereMonth('week_start', $month)
-                  ->whereYear('week_start', $year)
-                  ->whereIn('status', ['submitted', 'approved']) // Hanya yang valid
-                  ->whereIn('user_id', $allowedUserIds);         // Filter Hak Akses
+                    ->whereYear('week_start', $year)
+                    ->whereIn('status', ['approved']) // Hanya yang valid
+                    ->whereIn('user_id', $allowedUserIds);         // Filter Hak Akses
             });
 
         $entries = $query->get();
 
         // 4. Grouping & Hitung di PHP (SOLUSI ANGKA KOSONG)
-        $summary = $entries->groupBy(function($entry) {
+        $summary = $entries->groupBy(function ($entry) {
             return $entry->timesheet->user->user_id ?? 'UNKNOWN';
-        })->map(function($group) {
-            
+        })->map(function ($group) {
+
             // Ambil data profil karyawan dari entry pertama
             $userData = $group->first()->timesheet->user;
 
             // RUMUS PHP: Konversi string ke float lalu jumlahkan
-            $totalReg = $group->sum(function($e) {
-                return (float)$e->monday_regular + 
-                       (float)$e->tuesday_regular + 
-                       (float)$e->wednesday_regular + 
-                       (float)$e->thursday_regular + 
-                       (float)$e->friday_regular + 
-                       (float)$e->saturday_regular + 
-                       (float)$e->sunday_regular;
+            $totalReg = $group->sum(function ($e) {
+                return (float)$e->monday_regular +
+                    (float)$e->tuesday_regular +
+                    (float)$e->wednesday_regular +
+                    (float)$e->thursday_regular +
+                    (float)$e->friday_regular +
+                    (float)$e->saturday_regular +
+                    (float)$e->sunday_regular;
             });
 
-            $totalOvt = $group->sum(function($e) {
-                return (float)$e->monday_overtime + 
-                       (float)$e->tuesday_overtime + 
-                       (float)$e->wednesday_overtime + 
-                       (float)$e->thursday_overtime + 
-                       (float)$e->friday_overtime + 
-                       (float)$e->saturday_overtime + 
-                       (float)$e->sunday_overtime;
+            $totalOvt = $group->sum(function ($e) {
+                return (float)$e->monday_overtime +
+                    (float)$e->tuesday_overtime +
+                    (float)$e->wednesday_overtime +
+                    (float)$e->thursday_overtime +
+                    (float)$e->friday_overtime +
+                    (float)$e->saturday_overtime +
+                    (float)$e->sunday_overtime;
             });
 
             // Format data agar sesuai dengan View yang sudah ada
             return (object) [
                 'employee_name'   => $userData ? $userData->name : 'Unknown User',
                 'employee_id'     => $userData ? $userData->user_id : '-',
-                'employee_divisi' => $userData ? ($userData->department ?? '-') : '-', 
+                'employee_divisi' => $userData ? ($userData->department ?? '-') : '-',
                 'total_regular'   => $totalReg,
                 'total_overtime'  => $totalOvt
             ];

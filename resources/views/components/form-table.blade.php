@@ -22,7 +22,8 @@
                 <th rowspan="3" class="px-2 py-2">Task</th>
 
                 @foreach ($timesheet->getWeekDates() as $date)
-                    <th colspan="2" class="px-1 py-1 bg-gray-200/50 dark:bg-gray-800/50">{{ $date['formatted'] }}</th>
+                    <th colspan="2" class="px-1 py-1 bg-gray-200/50 dark:bg-gray-800/50">{{ $date['formatted'] }}
+                    </th>
                 @endforeach
 
                 <th rowspan="2" colspan="2" class="px-2 py-2">Total</th>
@@ -35,11 +36,19 @@
             </tr>
             <tr>
                 @foreach ($timesheet->getWeekDates() as $date)
-                    <th class="px-1 py-1 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">R</th>
-                    <th class="px-1 py-1 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">OT</th>
+                    <th
+                        class="px-1 py-1 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">
+                        R</th>
+                    <th
+                        class="px-1 py-1 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">
+                        OT</th>
                 @endforeach
-                <th class="px-1 py-2 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">R</th>
-                <th class="px-1 py-2 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">OT</th>
+                <th
+                    class="px-1 py-2 border-r-2 border-gray-300/50 bg-gray-200 dark:border-gray-700/50 dark:bg-gray-800">
+                    R</th>
+                <th
+                    class="px-1 py-2 border-r-2 border-gray-400/50 bg-gray-200 dark:border-gray-600/50 dark:bg-gray-800">
+                    OT</th>
             </tr>
         </thead>
         <tbody id="entriesContainer" class="text-gray-900 dark:text-white">
@@ -47,7 +56,8 @@
                 <tr class="entry-row" data-index="{{ $index }}">
                     <td class="px-2 py-2 border-b-2 border-gray-400 dark:border-gray-600">
                         <select name="entries[{{ $index }}][discipline]"
-                            class="w-full px-2 py-1 bg-gray-200 dark:bg-gray-800 border-none rounded discipline-select" required>
+                            class="w-full px-2 py-1 bg-gray-200 dark:bg-gray-800 border-none rounded discipline-select"
+                            required>
                             <option value="">Select...</option>
                             @foreach ($disciplines as $value => $label)
                                 <option value="{{ $value }}"
@@ -112,7 +122,9 @@
                         @php
                             $isWeekend = in_array($day, ['saturday', 'sunday']);
                             // Jika weekend, input regular jadi readonly & abu-abu
-                            $readOnlyClass = $isWeekend ? 'bg-gray-100 cursor-not-allowed text-gray-400' : 'bg-gray-800';
+                            $readOnlyClass = $isWeekend
+                                ? 'bg-gray-100 cursor-not-allowed text-gray-400'
+                                : 'bg-gray-800';
                             $readOnlyAttr = $isWeekend ? 'readonly tabindex="-1"' : '';
                             // Nilai regular di weekend dipaksa 0
                             $regularValue = $isWeekend ? 0 : (float) $entry->{$day . '_regular'};
@@ -149,7 +161,8 @@
                 <tr class="entry-row border-b-2 border-gray-300/50 dark:border-gray-700/50" data-index="0">
                     <td class="px-2 py-2 ">
                         <select name="entries[0][discipline]"
-                            class="w-full px-2 py-1 border-none rounded bg-white dark:bg-gray-800 discipline-select " required>
+                            class="w-full px-2 py-1 border-none rounded bg-white dark:bg-gray-800 discipline-select "
+                            required>
                             <option value="">Select...</option>
                             @foreach ($disciplines as $value => $label)
                                 <option value="{{ $value }}">{{ $label }}</option>
@@ -158,7 +171,8 @@
                     </td>
                     <td class="px-2 py-2 ">
                         <input type="text" name="entries[0][level_grade]" value="{{ $userLevel }}"
-                            class="w-full bg-white dark:bg-gray-800 border-none rounded shadow-sm cursor-not-allowed" readonly>
+                            class="w-full bg-white dark:bg-gray-800 border-none rounded shadow-sm cursor-not-allowed"
+                            readonly>
 
                         {{-- FIX: Ganti {{ $index }} menjadi 0 (Hardcode untuk baris baru) --}}
                         <input type="hidden" name="entries[0][level_grade]" value="{{ $userLevel }}">
@@ -200,15 +214,16 @@
                     @foreach (['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as $day)
                         @php
                             $isWeekend = in_array($day, ['saturday', 'sunday']);
-                            $readOnlyClass = $isWeekend ? 'bg-white dark:bg-gray-800 cursor-not-allowed text-gray-400' : 'bg-white dark:bg-gray-800';
+                            $readOnlyClass = $isWeekend
+                                ? 'bg-white dark:bg-gray-800 cursor-not-allowed text-gray-400'
+                                : 'bg-white dark:bg-gray-800';
                             $readOnlyAttr = $isWeekend ? 'readonly tabindex="-1"' : '';
                         @endphp
                         <td class="px-1 py-2 border-r-2 border-gray-300/50 dark:border-gray-700/50">
                             <input type="number" name="entries[0][{{ $day }}_regular]"
                                 class="w-8 px-1 py-1 border-none rounded bg-white dark:bg-gray-800 text-center hour-input {{ $readOnlyClass }}"
                                 min="0" max="8" step="0.5" data-type="regular"
-                                data-day="{{ $day }}" value="0" 
-                                {!! $readOnlyAttr !!}>
+                                data-day="{{ $day }}" value="0" {!! $readOnlyAttr !!}>
                         </td>
                         <td class="px-1 py-2 border-r-2 border-gray-400/50 dark:border-gray-600/50">
                             <input type="number" name="entries[0][{{ $day }}_overtime]"
@@ -218,7 +233,9 @@
                         </td>
                     @endforeach
 
-                    <td class="w-8 px-4 py-3 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center font-semibold total-regular">0
+                    <td
+                        class="w-8 px-4 py-3 border-r-2 border-gray-400/50 dark:border-gray-600/50 text-center font-semibold total-regular">
+                        0
                     </td>
                     <td class="w-8 px-4 py-3 text-center font-semibold total-overtime">0</td>
                     <td class="w-8 px-4 py-3 text-center">
