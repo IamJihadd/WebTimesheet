@@ -1,8 +1,7 @@
 <?php
 
-// Paksa PHP menampilkan semua error ke layar browser
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+echo "<h1>Halo! Mesin PHP di Vercel Berhasil Menyala!</h1>";
+echo "<p>Jika tulisan ini muncul, berarti Vercel normal dan masalahnya ada di dalam sistem Laravel.</p>";
 
-require __DIR__ . '/../public/index.php';
+// Kita matikan (comment) pemanggilan Laravel untuk sementara
+// require __DIR__ . '/../public/index.php';
