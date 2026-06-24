@@ -122,11 +122,11 @@ class TimesheetController extends Controller
         ]);
 
         // Get master data for dropdowns
-        $disciplines = Discipline::active()->pluck('name', 'name');
-        $projectCodes = ProjectCode::active()->get()->mapWithKeys(function ($item) {
+        $disciplines = Discipline::pluck('name', 'name');
+        $projectCodes = ProjectCode::get()->mapWithKeys(function ($item) {
             return [$item->code => $item->code . ' - ' . $item->name];
         });
-        $levelGrades = LevelGrade::active()->pluck('name', 'name');
+        $levelGrades = LevelGrade::pluck('name', 'name');
         $costCodes = CostCode::all();
         $tasks = Task::all();
 
@@ -170,11 +170,11 @@ class TimesheetController extends Controller
         $timesheet->load('entries');
 
         // Get master data for dropdowns
-        $disciplines = Discipline::active()->pluck('name', 'name');
-        $levelGrades = LevelGrade::active()->pluck('name', 'name');
-        $projectCodes = ProjectCode::active()->get()->mapWithKeys(function ($item) {
+        $disciplines = Discipline::pluck('name', 'name');
+        $projectCodes = ProjectCode::get()->mapWithKeys(function ($item) {
             return [$item->code => $item->code . ' - ' . $item->name];
         });
+        $levelGrades = LevelGrade::pluck('name', 'name');
         // $disciplines = Discipline::all();
         // $levelGrades = LevelGrade::all();
         // $projectCodes = ProjectCode::all();
@@ -274,7 +274,7 @@ class TimesheetController extends Controller
 
 
     public function approve(Timesheet $timesheet)
-    {   
+    {
         $user = auth()->user();
 
         //Cek role manager atau bukan
