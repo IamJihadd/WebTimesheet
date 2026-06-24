@@ -35,6 +35,8 @@
                     <form action="{{ route('timesheet.store', $timesheet->id) }}" method="POST" id="timesheetForm">
                         @csrf
 
+                        @dd($disciplines)
+
                         <x-form-table :timesheet="$timesheet" :disciplines="$disciplines" :level-grades="$levelGrades" :project-codes="$projectCodes"
                             :cost-codes="$costCodes" :tasks="$tasks" />
 
@@ -53,8 +55,7 @@
                                 </button>
                                 <button type="submit" name="action" value="submit"
                                     class="px-4 py-2 bg-green-600 h-10 text-white rounded-md hover:bg-green-700"
-                                    {{-- sm:max-w-32 --}}
-                                    onclick="return confirm('Submit timesheet for approval?')">
+                                    {{-- sm:max-w-32 --}} onclick="return confirm('Submit timesheet for approval?')">
                                     Submit for Approval
                                 </button>
                             </div>
