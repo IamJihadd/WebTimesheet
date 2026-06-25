@@ -27,11 +27,10 @@
                 <div class="p-6">
                     <form action="{{ route('timesheet.store-new') }}" method="POST" id="timesheetForm">
                         @csrf
+                        
                         <input type="hidden" name="week_start" value="{{ $timesheet->week_start->format('Y-m-d') }}">
                         <input type="hidden" name="week_end" value="{{ $timesheet->week_end->format('Y-m-d') }}">
 
-                        @dd($disciplines)
-                        
                         <x-form-table :timesheet="$timesheet" :disciplines="$disciplines" :level-grades="$levelGrades" :project-codes="$projectCodes"
                             :cost-codes="$costCodes" :tasks="$tasks" />
 

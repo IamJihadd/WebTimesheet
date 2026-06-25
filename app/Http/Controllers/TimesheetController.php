@@ -123,7 +123,6 @@ class TimesheetController extends Controller
 
         // Get master data for dropdowns
         $disciplines = Discipline::pluck('name', 'name');
-        dd($disciplines);
         $projectCodes = ProjectCode::get()->mapWithKeys(function ($item) {
             return [$item->code => $item->code . ' - ' . $item->name];
         });

@@ -35,8 +35,6 @@
                     <form action="{{ route('timesheet.store', $timesheet->id) }}" method="POST" id="timesheetForm">
                         @csrf
 
-                        @dd($disciplines)
-
                         <x-form-table :timesheet="$timesheet" :disciplines="$disciplines" :level-grades="$levelGrades" :project-codes="$projectCodes"
                             :cost-codes="$costCodes" :tasks="$tasks" />
 
